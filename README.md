@@ -11,7 +11,9 @@ Example usage:
 ```bash
 cd <git clone dir>
 docker build -t ganglia .
-docker run -h archganglia -d -ti -v /path/to/Docklia/clone/dirconfDir/:/usr/local/etc/ -p 80:80 -p 6343:6343/udp -p 8649:8649/udp -p 8649:8649/tcp ganglia --zone Africa/Johannesburg --server
+docker run -h archganglia -d -ti -v /path/to/Docklia/clone/dir/confDir/:/usr/local/etc/ -p 80:80 -p 6343:6343/udp -p 8649:8649/udp -p 8649:8649/tcp ganglia --zone Africa/Johannesburg --server
+# OR
+docker run -d -ti -v /path/to/Docklia/clone/dir/confDir/:/usr/local/etc/ --net=host ganglia --zone Africa/Johannesburg --server
 ```
 
 The commands specify the following:
