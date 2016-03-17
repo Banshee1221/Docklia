@@ -89,5 +89,5 @@ EXPOSE 6343
 
 # Start services
 RUN mkdir /var/log/ganglia
-ADD services.sh services.sh
-ENTRYPOINT ["bash", "services.sh"]
+ADD services.py services.py
+ENTRYPOINT ["python2", "services.py"]
