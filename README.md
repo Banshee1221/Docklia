@@ -4,6 +4,8 @@ Docklia is a Dockerized version of Ganglia based on CentOS 6.
 
 This program allows you to create server and client instances of Ganglia to deploy across a cluster.
 
+Note: Edit the gmetad.conf and gmond.conf files in the confDir directory to reflect the ip or your server. Hostnames aren't working yet. (Need to figure that out)
+
 Example usage:
 
 ```bash
