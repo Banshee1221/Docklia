@@ -24,10 +24,8 @@ RUN yum -y update && yum -y install epel-release && \
       gcc \
       zlib-devel \
       make \
-      python2 \
       php \
-      httpd \
-      python-setuptools && \
+      httpd && \
     yum clean all && \
     cd /usr/local/src && \
       wget https://sourceforge.net/projects/ganglia/files/ganglia%20monitoring%20core/$GANGLIA_VERSION/ganglia-$GANGLIA_VERSION.tar.gz/download -O /usr/local/src/ganglia.tar.gz && \
@@ -57,7 +55,13 @@ RUN yum -y update && yum -y install epel-release && \
       make install && \
     cd / && \
       rm -rf /usr/local/src/ganglia-web-$GANGLIA_WEB_VERSION && \
-    rm -rf /usr/local/src/*
+    rm -rf /usr/local/src/* && \
+    yum remove -y vim-minimal \
+      tar \
+      epel-release \
+      wget \
+      rsync \
+      gcc
 
 EXPOSE 80
 EXPOSE 8649
@@ -65,5 +69,5 @@ EXPOSE 6343
 
 # Start services
 RUN mkdir /var/log/ganglia
-ADD services.py services.py
-ENTRYPOINT ["python2", "services.py"]
+ADD services.sh services.sh
+ENTRYPOINT ["bash", "services.sh"]
